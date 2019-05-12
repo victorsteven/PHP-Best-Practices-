@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Document</title>
-</head>
-<body>
+<?php require('partials/head.php')   ?>
 
-<a href="/about">About</a>
-<a href="/contact">Contact</a>
-
-  <ul>
+ <ul>
     <?php foreach ($tasks as $task) : ?>
       <li>
         <?php if($task->completed) : ?>
@@ -17,7 +9,7 @@
         <?=  $task->description  ?>
         <?php endif; ?>
       </li>
-<?php endforeach; ?>
+    <?php endforeach; ?>
   </ul>
 </body>
 </html>
