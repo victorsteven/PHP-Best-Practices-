@@ -4,6 +4,10 @@
   <title>Document</title>
 </head>
 <body>
+
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+
   <ul>
     <?php foreach ($tasks as $task) : ?>
       <li>
