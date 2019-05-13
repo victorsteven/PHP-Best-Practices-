@@ -5,6 +5,7 @@ require 'vendor/autoload.php';
 $query = require 'core/bootstrap.php';
 
 
+use App\Core\{Router, Request};
 // die(var_dump($app));
 
 
@@ -21,5 +22,10 @@ $query = require 'core/bootstrap.php';
 // require $router->direct($uri);
 
 //the router load the file, we direct trafic to it, and we send it to wherever you require it to go
-require  Router::load('routes.php')
+// require  Router::load('routes.php')
+//           ->direct(Request::uri(), Request::method());
+
+// since we are now using controller, we no longer require anything 
+
+Router::load('app/routes.php')
           ->direct(Request::uri(), Request::method());

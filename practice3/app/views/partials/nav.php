@@ -13,6 +13,10 @@
 
     </li>
     <li>
+    <a href="/users">Users</a>
+
+    </li>
+    <li>
     <a href="/about/culture">About Culture</a>
 
     </li> 

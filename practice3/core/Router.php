@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Core;
 
 class Router {
 
@@ -35,9 +36,31 @@ class Router {
   public function direct($uri, $requestType) {
     //note key is the gotten from the route array
     if(array_key_exists($uri, $this->routes[$requestType])) {
-      return $this->routes[$requestType][$uri];
+      // return $this->routes[$requestType][$uri];
+
+      //the spread operator below help each argument of the arry to be converted to function arguments, when we define the "callAction()" function 
+      return $this->callAction(
+        ...explode('@', $this->routes[$requestType][$uri])
+      );
     }
 
-    throw new Exception('No route seen');
+    throw new \Exception('No route seen');
+  }
+
+  protected function callAction($controller, $action) {
+
+    $controller = "App\\Controllers\\{$controller}";
+
+    // die(var_dump($controller));
+
+    $controller = new $controller;
+
+    if(! method_exists($controller, $action)) {
+      throw new \Exception(
+        "{$controller} does not respond to the {$action} action."
+      );
+    }
+    // return (new $controller)->$action();
+    return $controller->$action();
   }
 }
